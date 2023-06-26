@@ -1,5 +1,7 @@
 # Omdena-Quantum-Self-Driving Project 2023
 
+## Project Lead: Raghav Thiruvallur (Please contact raghav.thiruv@gmail.com for any questions)
+
 # Variational Quantum Convolutional Neural Network for Image Recognition to Determine Steering Angle for Autonomous Vehicles 
 
 ## Goal
