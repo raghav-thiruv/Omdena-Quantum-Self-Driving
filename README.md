@@ -33,10 +33,5 @@ Design and implement a Variational Quantum Algorithm alongside a classical Machi
 ### Deep Learning Neural Networks + Variational Quantum Circuit 
 Training models using 4 qubit HVA circuit + Deep Learnning Neural netwwrk
 
-## Communication Tools: 
-* Please go to Asana to check tasks regarding the project or email us to be added to the Asana for this project
-* Utilize GitHub for project code updates
-* Check Discord for updates
-   * 8009f3ad0249a9565410ca6f247697926ea1e7b1
 
 
