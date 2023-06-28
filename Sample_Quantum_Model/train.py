@@ -15,7 +15,7 @@ saver = tf.train.Saver(write_version=saver_pb2.SaverDef.V2)
 logs_path = './logs'
 summary_writer = tf.summary.FileWriter(logs_path, graph=tf.get_default_graph())
 
-epochs = 5 #30
+epochs = 3 #30
 batch_size = 100
 sess.run(init)
 # Train over the dataset for 30 epochs
