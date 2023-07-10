@@ -31,7 +31,7 @@ pages = {
 
 # Create a function for each page
 def home():
-    st.title("Welcome to Omdena Quantumn Self Driving Project")
+    st.title("Welcome to Omdena Quantum Self Driving Project")
     # Add content for the home page
 
 def build_cnn():
