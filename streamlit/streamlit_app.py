@@ -81,7 +81,6 @@ def build_cnn():
             if f'units_{i}' in st.session_state:
                 del st.session_state[f'units_{i}']  # forget units
             layers.append((layer_type,))
-        #st.write(st.session_state)
     create_cnn = st.button(label = "Create CNN")
 
 
