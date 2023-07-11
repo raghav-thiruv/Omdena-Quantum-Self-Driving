@@ -1,3 +1,4 @@
 streamlit
 tensorflow
 scikit-learn
+streamlit-option-menu
