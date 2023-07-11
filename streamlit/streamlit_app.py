@@ -63,7 +63,6 @@ def build_cnn():
         if f'layer_type_{i}' not in st.session_state:
             st.session_state[f'layer_type_{i}'] = "CNN"  # default layer type
         layer_type = st.selectbox(f"Layer{i+1}", layer_types,  index=layer_types.index(st.session_state[f'layer_type_{i}']))
-        #st.session_state[f'layer_type_{i}'] = layer_type  # remember layer type
         handle_layer_type(f'layer_type_{i}', layer_type)
         if layer_type == "CNN":
             if f'kernel_size_{i}' not in st.session_state:
