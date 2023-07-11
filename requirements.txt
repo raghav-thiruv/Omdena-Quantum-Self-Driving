@@ -129,7 +129,7 @@ semantic-version==2.10.0
 sentence-transformers==2.2.2
 sentencepiece==0.1.99
 six==1.15.0
-sklearn==0.0.post5
+scikit-learn
 smart-open==6.3.0
 smmap==5.0.0
 SQLAlchemy==2.0.15
