@@ -29,7 +29,7 @@ def update_circuit_visualization(circuit, gate_operations):
 
 
 def main():
-    st.title("IBM Quantum Composer")
+    st.title("Quantum Composer")
 
     # Sidebar options
     num_qubits = st.sidebar.number_input("Number of Qubits", min_value=1, max_value=5, value=2, step=1)
