@@ -68,21 +68,57 @@ def clear_circuit():
     global circuit
     gate_list = [[] for _ in range(num_qubits)]
     circuit = QuantumCircuit(num_qubits)
+    st.write(circuit_drawer(circuit, output='mpl'))
+    #return circuit
 
 # Iterate over qubits
 for qubit in range(num_qubits):
     st.header(f"Qubit {qubit}")
-
     gate_form = st.form(key=f"gate_form_{qubit}")
     with gate_form:
+
         selected_gate = st.selectbox(
             f"Select a gate for Qubit {qubit}:",
             ('None', 'X', 'Y', 'Z', 'H', 'S', 'T', 'CX', 'CCX')
         )
-        if selected_gate != 'None':
-            gate_list[qubit].append(selected_gate)
-            apply_gate(circuit, selected_gate, qubit)
-        gate_form.form_submit_button("Add Gate")
+    gate_list[qubit].append(selected_gate)
+        
+        #if selected_gate != 'None':
+        #gate_list[qubit].append(selected_gate)
+            #apply_gate(circuit, selected_gate, qubit)
+    gate_form.form_submit_button("Add Gate")
+
+
+
+variable = True
+while variable == True:
+    if gate_form.form_submit_button("Add more gates"):
+        with gate_form:
+            selected_gate1 = st.selectbox(
+                f"Select a gate for Qubit {qubit}:",
+                ('None', 'X', 'Y', 'Z', 'H', 'S', 'T', 'CX', 'CCX'), key="3q"
+            )
+        gate_list[qubit].append(selected_gate1)
+
+                
+                #if selected_gate != 'None':
+                #gate_list[qubit].append(selected_gate)
+                    #apply_gate(circuit, selected_gate, qubit)
+        gate_form.form_submit_button("Add another Gate")
+        
+
+        if gate_form.form_submit_button("Finished adding gates"):
+            variable = False
+            
+
+
+
+
+
+       
+            #apply_gate(circuit, selected_gate, qubit)
+
+
 
 # Apply the gates from the gate list to the circuit
 for qubit, gates in enumerate(gate_list):
@@ -94,11 +130,11 @@ st.header("Circuit Visualization")
 st.write(circuit_drawer(circuit, output='mpl'))
 
 # Buttons to clear the circuit and compute the circuit
-col1, col2 = st.beta_columns(2)
-if col1.button("Clear Circuit"):
+#col1, col2 = st.columns(2)
+if st.button("Clear Circuit"):
     clear_circuit()
 
-if col2.button("Compute Circuit"):
+if st.button("Compute Circuit"):
     statevector = compute_circuit(circuit)
     st.text("Final statevector:")
     st.write(statevector)
