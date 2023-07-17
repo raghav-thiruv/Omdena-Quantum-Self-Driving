@@ -2,25 +2,10 @@ import streamlit as st
 from qiskit import QuantumCircuit, execute, Aer
 from qiskit.visualization import circuit_drawer, plot_state_city
 import matplotlib.pyplot as plt
-
-
+r=0
+arr = []
 def update_circuit_visualization(circuit, gate_operations):
-    num_qubits = circuit.num_qubits
     circuit_drawer_file = "circuit_drawer.png"
-
-    for qubit, gate_ops in enumerate(gate_operations):
-        for gate in gate_ops:
-            if gate == "Hadamard":
-                circuit.h(qubit)
-            elif gate == "Pauli-X":
-                circuit.x(qubit)
-            elif gate == "Pauli-Y":
-                circuit.y(qubit)
-            elif gate == "Pauli-Z":
-                circuit.z(qubit)
-            elif gate == "CNOT":
-                control = (qubit + 1) % num_qubits
-                circuit.cx(qubit, control)
 
     circuit_drawer(circuit, output='mpl', filename=circuit_drawer_file)
     image = plt.imread(circuit_drawer_file)
@@ -29,6 +14,8 @@ def update_circuit_visualization(circuit, gate_operations):
 
 
 def main():
+    global r
+    global arr
     st.title("Quantum Composer")
 
     # Sidebar options
@@ -36,7 +23,12 @@ def main():
 
     # Initialize a Quantum Circuit
     circuit = QuantumCircuit(num_qubits)
-    gate_operations = [[] for _ in range(num_qubits)]
+
+    if r == 0:
+        r += 1
+        arr = [[] for _ in range(num_qubits)]
+        gate_operations = [[] for _ in range(num_qubits)]
+        print(r)
 
     # Quantum Gates
     gate_options = ["Hadamard", "Pauli-X", "Pauli-Y", "Pauli-Z", "CNOT"]
@@ -58,7 +50,10 @@ def main():
 
         if st.sidebar.button(f"Apply Gate {qubit}", key=f"apply-{qubit}"):
             
+            print(arr)
             gate_operations[selected_qubit].append(selected_gate)
+            arr[selected_qubit].append(selected_gate)
+            print(arr)
 
             # Reset the circuit to remove the previously applied gates
             circuit = QuantumCircuit(num_qubits)
